@@ -14,7 +14,8 @@ void setup(void)
 
 void stop(void) //Stops
 {
-  digitalWrite(
+  digitalWrite(E1, LOW);
+  digitalWrite(E2, LOW);
 }
 
 void forward(char a, char b)
