@@ -21,18 +21,48 @@ void loop()
 {
   Serial.print(getLight());
   Serial.println(" % Light");
-  while(getLight() >= 30)
+  while(getLight() >= 12)
   {
     Serial.print(getLight());
     Serial.println(" % Light");
-    forward(leftspeed, rightspeed);
+    int n = random(1,5);
+    switch(n)
+    {
+      case 1:
+        forward(leftspeed, rightspeed);
+        break;
+      case 2:
+        reverse(leftspeed, rightspeed);
+        break;
+      case 3:
+        left(leftspeed, rightspeed);
+        break;
+      case 4:
+        right(leftspeed, rightspeed);
+        break;
+      default:
+        forward(leftspeed, rightspeed);
+        delay(500);
+        reverse(leftspeed, rightspeed);
+        delay(500);
+        forward(leftspeed, rightspeed);
+        delay(500);
+        right(leftspeed, rightspeed);
+        delay(500);
+        break;
+    }
+    delay(2500);
   }
-  while(getLight() < 30)
+  stop();
+  while(getLight() < 12)
   {
     Serial.print(getLight());
     Serial.println(" % Light");
     reverse(leftspeed, rightspeed);
+    delay(5000);
   }
+  left(leftspeed, rightspeed);
+  delay(2500);
   stop();
 }
 

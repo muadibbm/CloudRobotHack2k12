@@ -15,6 +15,7 @@ void setup(void)
 void loop(void)
 {
   while(Serial.available() < 1) {}
+  char val = Serial.read();
   int leftspeed = 255;
   int rightspeed  = 255;
 //  spiral(leftspeed, rightspeed);
