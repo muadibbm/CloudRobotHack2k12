@@ -1,4 +1,4 @@
-int incomingByte;
+char incomingByte;
 int count = 0;
 void setup()
 {
@@ -11,16 +11,17 @@ void loop()
   {
     incomingByte = Serial.read();
 
-    if(incomingByte == 'R')
+    Serial.println(incomingByte);
+    /*if(incomingByte == 'R')
     {
       Serial.println("RESET");
       count = 0;
-    }
+    }*/
     Serial.flush();
   }
   
-  Serial.println(count);
-  count++;
+  /*Serial.println(count);
+  count++;*/
     
   delay(250);
 }
