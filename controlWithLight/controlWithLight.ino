@@ -6,6 +6,7 @@ int M2 = 7;
 int M1 = 8;
 int leftspeed = 255; //255 is maximum speed
 int rightspeed = 255;
+int LED = 13;  // select the pin for the LED
 
 void setup(){
 pinMode(lightPin, INPUT);
@@ -19,47 +20,43 @@ Serial.begin(115200); //
 
 void loop()
 {
-  Serial.print(getLight());
-  Serial.println(" % Light");
-  while(getLight() >= 12)
+  while(getLight() >= 50)
   {
-    Serial.print(getLight());
-    Serial.println(" % Light");
-    int n = random(1,5);
+    digitalWrite(LED, LOW);
+    forward(leftspeed, rightspeed);
+    /*int n = random(1,5);
     switch(n)
     {
       case 1:
         forward(leftspeed, rightspeed);
-        delay(10000);
         break;
       case 2:
         reverse(leftspeed, rightspeed);
-        delay(10000);
         break;
       case 3:
         left(leftspeed, rightspeed);
-        delay(3500);
         break;
       case 4:
         right(leftspeed, rightspeed);
-        delay(3500);
         break;
       default:
-        delay(500);
         break;
     }
-    delay(1000);
+    delay(1000);*/
   }
-  stop();
-  while(getLight() < 15)
+  while(getLight() <= 50 && getLight() > 12)
   {
-    Serial.print(getLight());
-    Serial.println(" % Light");
-    stop();
-    delay(20000);
+    int n = random(1,2);
+    switch(n)
+    {
+      case 1:
+        left(leftspeed, rightspeed);
+        break;
+      default:
+        right(leftspeed, rightspeed);
+        break;
+    }
   }
-  left(leftspeed, rightspeed);
-  delay(2500);
   stop();
 }
 
