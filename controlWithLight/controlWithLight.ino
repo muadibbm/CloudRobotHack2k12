@@ -22,38 +22,44 @@ void loop()
 {
   while(getLight() >= 50)
   {
-    digitalWrite(LED, LOW);
     forward(leftspeed, rightspeed);
-    /*int n = random(1,5);
+    delay(20000);
+    reverse(leftspeed, rightspeed);
+    delay(3000);
+    int n = random(1,4);
     switch(n)
     {
       case 1:
-        forward(leftspeed, rightspeed);
+        left(leftspeed, rightspeed);
+        delay(2500);
         break;
       case 2:
-        reverse(leftspeed, rightspeed);
-        break;
-      case 3:
-        left(leftspeed, rightspeed);
-        break;
-      case 4:
         right(leftspeed, rightspeed);
+        delay(2500);
         break;
       default:
+        reverse(leftspeed, rightspeed);
+        delay(3000);
         break;
     }
-    delay(1000);*/
   }
   while(getLight() <= 50 && getLight() > 12)
   {
-    int n = random(1,2);
+    int n = random(1,4);
     switch(n)
     {
       case 1:
         left(leftspeed, rightspeed);
+        delay(2500);
+        stop();
+        break;
+      case 2:
+        right(leftspeed, rightspeed);
+        delay(2500);
+        stop();
         break;
       default:
-        right(leftspeed, rightspeed);
+        stop();
         break;
     }
   }
